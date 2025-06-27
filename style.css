@@ -1,59 +1,73 @@
-body {
+/* Reset e base */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;
   background-color: rgb(204, 202, 202);
   color: black;
   overflow-x: hidden;
-  max-width: 100vw; /* PREVINE SCROLL LATERAL */
-  box-sizing: border-box;
+  max-width: 100vw;
 }
 
+/* Navbar fixa no topo */
 .nav-bar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgb(0, 0, 0);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  flex-wrap: wrap;
 }
 
-/* Ajusta o conteúdo para não ficar atrás da nav fixa */
 main, section, .conteudo {
-  margin-top: 60px; /* ajuste conforme a altura real da nav */
+  margin-top: 60px;
 }
-.logo-nome{
-    display: flex;
-    align-items: center;
-    gap: 15px;
+
+/* Logo + título */
+.logo-nome {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
-.logo{
-    height: 60px;
-    border-radius: 50%;
+
+.logo {
+  height: 60px;
+  border-radius: 50%;
 }
-.nome-site{
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    color: rgb(74, 124, 81);
+
+.nome-site {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  color: rgb(74, 124, 81);
 }
-.menu a{
-    font-weight: bold;
-    text-decoration: none;
-    padding: 12px 20px;
-    color: white;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      cursor: pointer;
+
+/* Menu de navegação */
+.menu a {
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 20px;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
+
+/* Banner responsivo com imagem de fundo */
 .banner {
   width: 100%;
   min-height: 100vh;
-  background-image: url("img/RODA\ LIVRE\ \(1\).png");
+  background-image: url("img/RODA LIVRE (1).png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -62,31 +76,27 @@ main, section, .conteudo {
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
   padding: 40px 20px;
-  box-sizing: border-box;
   flex-direction: column;
   color: white;
-  z-index: 0;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-.card {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  max-width: 1000px;
-  padding: 10px;
-  background-color: rgb(74, 124, 81);
-  margin: 0 auto; /* CENTRALIZA */
-  box-sizing: border-box;
 }
 
+/* Grid dos cards de produto */
+.card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: rgb(74, 124, 81);
+  margin: 0 auto;
+}
+
+/* Estilo dos cards */
 .geral {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -97,7 +107,7 @@ main, section, .conteudo {
 
 .geral:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .geral img {
@@ -132,9 +142,39 @@ main, section, .conteudo {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  align-self: stretch; /* botão com largura total do card */
+  width: 100%;
 }
 
 .geral button:hover {
   background-color: rgb(44, 73, 48);
+}
+
+/* 🔁 Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .menu a {
+    padding: 10px 15px;
+  }
+
+  .logo-nome {
+    width: 100%;
+    justify-content: space-between;
+    padding: 5px 0;
+  }
+
+  .banner {
+    padding: 20px;
+    text-align: center;
+  }
 }
